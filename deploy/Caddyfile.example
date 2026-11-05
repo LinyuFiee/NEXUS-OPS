@@ -1,0 +1,7 @@
+# Replace this placeholder domain and use the same origin in --public-url.
+ops.example.com {
+    reverse_proxy 127.0.0.1:7788 {
+        header_up Host ops.example.com
+        flush_interval -1
+    }
+}

@@ -1,0 +1,35 @@
+[Unit]
+Description=NEXUS OPS lightweight server assistant
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ops-agent
+Group=ops-agent
+WorkingDirectory=/srv/ops-work
+ExecStart=/usr/local/bin/ops-agent serve --data-dir /var/lib/ops-agent --work-dir /srv/ops-work --listen 127.0.0.1:7788
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=15
+StateDirectory=ops-agent
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/ops-work /var/lib/ops-agent
+RestrictSUIDSGID=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+MemoryHigh=128M
+MemoryMax=256M
+TasksMax=64
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

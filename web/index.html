@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#111216">
+  <meta name="referrer" content="same-origin">
+  <title>NEXUS / OPS · 服务器运维助手</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230d1c26'/%3E%3Cpath d='M11 29V11l18 18V11M11 20h18' fill='none' stroke='%235ce0bd' stroke-width='2.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-logo" viewBox="0 0 32 32"><path d="M7 25V7l18 18V7M7 16h18"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 15a3 3 0 0 1-3 3H9l-5 3V6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3Z"/><path d="M8 8h8M8 12h5"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v5c0 5-4 8-8 10-4-2-8-5-8-10V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+      <symbol id="i-memory" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4"/><rect x="9" y="9" width="6" height="6" rx="1"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2 12h5l3-8 4 16 3-8h5"/></symbol>
+      <symbol id="i-link" viewBox="0 0 24 24"><path d="m10 13 4-4M8 15l-2 2a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0M16 9l2-2a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0" transform="translate(1 0) scale(.91 1)"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></symbol>
+      <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M12 6.5h5M12 17.5h5"/></symbol>
+      <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+      <symbol id="i-disk" viewBox="0 0 24 24"><path d="m5 4-3 12v3a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-3L19 4Z"/><path d="M2 16h20M16 18.5h.01M19 18.5h.01"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M19 11a7 7 0 0 0-12-6L4 8M5 13a7 7 0 0 0 12 6l3-3"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="i-exit" viewBox="0 0 24 24"><path d="M9 4H4v16h5M9 12h12m-5-5 5 5-5 5"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="9" r="5"/><path d="m12 13 9 9m-5-5 3-3m-1 5 3-3"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/></symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 4 5 5M4 20l5-1L21 7l-5-5L4 14Z"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2Z"/><path d="M12 9v5M12 17h.01"/></symbol>
+      <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+      <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="m6 8 4 4-4 4M13 16h5"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M5 9a7 7 0 0 1 14 0v6l2 3H3l2-3ZM10 21h4"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 4h6l3 2 3-2h6v15h-6l-3 2-3-2H3ZM12 6v15"/></symbol>
+    </defs>
+  </svg>
+
+  <section id="boot-screen" class="boot-screen">
+    <div class="brand-mark large"><svg class="icon"><use href="#i-logo"/></svg></div>
+    <p class="eyebrow">NEXUS / OPS</p>
+    <h1>连接你的运维工作台</h1>
+    <p id="boot-message" class="muted" role="status">正在检查本机服务状态…</p>
+    <button id="boot-retry" class="button secondary" type="button" hidden>重新连接</button>
+  </section>
+
+  <section id="auth-screen" class="auth-screen" hidden>
+    <div class="auth-story">
+      <a class="brand auth-brand" href="#" aria-label="NEXUS OPS 首页"><span class="brand-mark"><svg class="icon"><use href="#i-logo"/></svg></span><span>NEXUS <b>/ OPS</b></span></a>
+      <span class="auth-caption">你的私有运维工作台</span>
+    </div>
+    <div class="auth-panel">
+      <div id="login-panel" class="auth-card" hidden>
+        <span class="section-index">SECURE ACCESS / 01</span><h2>欢迎回到工作台</h2><p class="muted">使用初始化时保存的访问令牌登录。</p>
+        <form id="login-form" autocomplete="off">
+          <div class="field"><label for="login-token">访问令牌 <span class="required">*</span></label><input id="login-token" type="password" autocomplete="off" spellcheck="false" required maxlength="512" placeholder="粘贴你的访问令牌"></div>
+          <p id="login-error" class="form-error" role="alert" hidden></p>
+          <button class="button primary full" type="submit">进入控制台 <svg class="icon"><use href="#i-arrow"/></svg></button>
+        </form>
+        <div class="security-note"><svg class="icon"><use href="#i-lock"/></svg><p>令牌不会保存在浏览器本地存储中。登录由 HttpOnly 会话 Cookie 保护。</p></div>
+        <p class="tiny muted">网页不会再次显示令牌。需要恢复时，可在服务器本机使用 token 管理命令查看或重置；不要通过 QQ 发送令牌。</p>
+      </div>
+      <div id="unlock-panel" class="auth-card" hidden>
+        <span class="section-index">FIRST CONNECTION / 01</span><h2>为你的主机建立连接</h2><p class="muted">这是首次启动。请从服务器本机运行设置码命令，获取一次性设置码后开始初始化。</p>
+        <div class="setup-command"><label class="field-label" for="setup-command">在服务器终端运行</label><input id="setup-command" class="mono" type="text" value="ops-agent setup-code --data-dir &quot;&lt;服务使用的数据目录&gt;&quot;" readonly autocomplete="off" spellcheck="false"><div class="inline-actions"><button id="copy-setup-command" class="button secondary small" type="button"><svg class="icon"><use href="#i-copy"/></svg>复制命令</button><span class="tiny muted">命令不包含任何凭据</span></div><p class="field-help">将占位目录替换为启动服务时使用的同一个数据目录。普通服务启动不会打印设置码。</p></div>
+        <form id="unlock-form" autocomplete="off">
+          <div class="field"><label for="setup-code">一次性设置码 <span class="required">*</span></label><input id="setup-code" type="password" autocomplete="off" spellcheck="false" required maxlength="512" placeholder="粘贴本机设置码命令的输出"></div>
+          <p id="unlock-error" class="form-error" role="alert" hidden></p>
+          <button class="button primary full" type="submit">验证并开始设置 <svg class="icon"><use href="#i-arrow"/></svg></button>
+        </form>
+        <div class="security-note"><svg class="icon"><use href="#i-shield"/></svg><p>验证前不会暴露主机环境。初始化不会直接启用 QQ 实时连接，也不会自动调用模型。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="setup-screen" class="setup-screen" hidden>
+    <aside class="setup-sidebar">
+      <div class="brand"><span class="brand-mark"><svg class="icon"><use href="#i-logo"/></svg></span><span>NEXUS <b>/ OPS</b></span></div>
+      <div class="setup-heading"><h1>设置工作台</h1><p class="muted">几步配置，开始使用。</p></div>
+      <nav id="setup-steps" class="setup-steps" aria-label="初始化步骤"></nav>
+      <div class="setup-trust"><svg class="icon"><use href="#i-lock"/></svg><span>凭据只保存在服务端<br>浏览器不持久保存密钥</span></div>
+    </aside>
+    <main class="setup-main">
+      <header class="setup-top"><span class="tiny muted">工作空间初始化</span><span id="setup-progress" class="mono">01 / 07</span></header>
+      <form id="setup-form" autocomplete="off" novalidate>
+        <div id="setup-fields"></div>
+        <p id="setup-error" class="form-error" role="alert" hidden></p>
+        <footer class="wizard-actions"><button id="setup-back" class="button secondary" type="button">上一步</button><button id="setup-skip" class="button ghost" type="button" hidden>暂不配置模型</button><span class="spacer"></span><button id="setup-next" class="button primary" type="button">继续 <svg class="icon"><use href="#i-arrow"/></svg></button></footer>
+      </form>
+    </main>
+  </section>
+
+  <section id="token-screen" class="token-screen" hidden>
+    <div class="token-card panel">
+      <span class="brand-mark large"><svg class="icon"><use href="#i-key"/></svg></span><span class="eyebrow">YOUR KEY. KEEP IT SAFE.</span><h1>请保存你的访问令牌</h1>
+      <p class="muted">网页仅在本次生成后显示完整令牌，离开后网页不会再次显示；可由服务器本机管理命令查看或重置。它拥有此工作台的管理权限，请安全保管。</p>
+      <div class="field"><label for="new-token">新的访问令牌</label><div class="input-with-actions"><input id="new-token" class="mono" type="password" readonly autocomplete="off" spellcheck="false"><button id="reveal-token" class="button secondary small" type="button">显示</button><button id="copy-token" class="button secondary small" type="button"><svg class="icon"><use href="#i-copy"/></svg>复制</button></div></div>
+      <div class="notice warning"><svg class="icon"><use href="#i-alert"/></svg><p>请放入密码管理器，不要发送到 QQ、群聊或写入对话与记忆。</p></div>
+      <label class="check-row"><input id="token-saved" type="checkbox"><span>我已将令牌保存在安全的位置</span></label>
+      <p id="token-error" class="form-error" role="alert" hidden></p>
+      <button id="token-login" class="button primary full" type="button" disabled>已保存，进入控制台 <svg class="icon"><use href="#i-arrow"/></svg></button>
+    </div>
+  </section>
+
+  <div id="app-screen" class="app-shell" hidden>
+    <button id="nav-backdrop" class="nav-backdrop" type="button" aria-label="关闭导航" hidden></button>
+    <aside id="sidebar" class="sidebar">
+      <a class="brand" href="#overview"><span class="brand-mark"><svg class="icon"><use href="#i-logo"/></svg></span><span>NEXUS <b>/ OPS</b></span></a>
+      <div class="workspace-label"><span class="status-dot"></span><span>个人工作台</span></div>
+      <nav class="primary-nav" aria-label="主导航">
+        <button class="nav-item active" data-view="overview" type="button"><svg class="icon"><use href="#i-grid"/></svg><span>主机概览</span></button>
+        <button class="nav-item" data-view="chat" type="button"><svg class="icon"><use href="#i-chat"/></svg><span>任务对话</span></button>
+        <button class="nav-item" data-view="approvals" type="button"><svg class="icon"><use href="#i-shield"/></svg><span>操作审批</span><span id="nav-approval-count" class="count-badge" hidden>0</span></button>
+        <button class="nav-item" data-view="memories" type="button"><svg class="icon"><use href="#i-memory"/></svg><span>长期记忆</span></button>
+        <button class="nav-item" data-view="timeline" type="button"><svg class="icon"><use href="#i-clock"/></svg><span>执行时间线</span></button>
+      </nav>
+      <div class="nav-section-label">管理</div>
+      <nav class="primary-nav" aria-label="配置导航">
+        <button class="nav-item" data-view="watch" type="button"><svg class="icon"><use href="#i-pulse"/></svg><span>自动值守</span></button>
+        <button class="nav-item" data-view="channels" type="button"><svg class="icon"><use href="#i-link"/></svg><span>QQ 接入</span></button>
+        <button class="nav-item" data-view="settings" type="button"><svg class="icon"><use href="#i-settings"/></svg><span>工作台设置</span></button>
+      </nav>
+      <div class="sidebar-bottom"><div class="local-note"><svg class="icon"><use href="#i-shield"/></svg><span>变更前，始终由你确认</span></div><div class="sidebar-version"><span id="app-version" class="mono">NEXUS / OPS</span><button id="logout" class="icon-button" type="button" title="退出登录" aria-label="退出登录"><svg class="icon"><use href="#i-exit"/></svg></button></div></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <button id="nav-toggle" class="icon-button mobile-only" type="button" aria-label="打开导航" aria-controls="sidebar" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
+        <div class="breadcrumb"><span>工作空间</span><svg class="icon"><use href="#i-chevron"/></svg><strong id="view-breadcrumb">主机概览</strong></div>
+        <div class="topbar-status"><span id="header-host" class="mono">本地主机</span><span class="topbar-divider"></span><span id="connection-status" class="connection-badge"><span class="status-dot"></span><span>服务已连接</span></span><button id="refresh-all" class="icon-button" type="button" title="刷新服务数据" aria-label="刷新服务数据"><svg class="icon"><use href="#i-refresh"/></svg></button><button id="context-toggle" class="button secondary small context-toggle" type="button" aria-label="任务详情" aria-controls="context-rail" aria-expanded="false" hidden><svg class="icon"><use href="#i-book"/></svg><span>任务详情</span></button></div>
+      </header>
+      <div class="workspace-body">
+        <main id="main-content" class="main-content">
+          <section id="view-overview" class="view" aria-labelledby="overview-title">
+            <header class="page-heading"><div><span class="eyebrow">CONTROL CENTER</span><h1 id="overview-title">主机概览</h1><p>看清当前状态，再决定下一步。</p></div><div class="page-heading-aside"><span id="overview-date" class="mono"></span><span id="metrics-updated" class="tiny muted">等待首次采样</span></div></header>
+            <div id="metrics-error" class="notice warning" role="status" hidden></div>
+            <div id="metric-cards" class="metric-grid"></div>
+            <section class="brief-panel panel"><div class="brief-copy"><h2>任务摘要</h2><p id="brief-text" class="brief-text">正在获取任务记录…</p><span class="brief-footnote">根据已有记录整理，不调用模型</span></div><button class="button primary" data-navigate="chat" type="button"><svg class="icon"><use href="#i-plus"/></svg>新建诊断</button></section>
+            <div class="section-heading"><h2>快速开始</h2><span class="tiny muted">仅填写问题，不会直接执行</span></div>
+            <div class="quick-grid"><button class="quick-card" data-prompt="请检查当前主机的运行状态，先做只读诊断，列出有证据的异常与建议。" type="button"><span class="quick-icon"><svg class="icon"><use href="#i-pulse"/></svg></span><strong>检查主机状态</strong><span>资源占用与运行概况</span><svg class="icon quick-arrow"><use href="#i-arrow"/></svg></button><button class="quick-card" data-prompt="请检查允许读取目录所在磁盘的空间使用情况，先给出诊断，不要自动删除文件。" type="button"><span class="quick-icon violet"><svg class="icon"><use href="#i-disk"/></svg></span><strong>排查磁盘空间</strong><span>先分析，不自动清理</span><svg class="icon quick-arrow"><use href="#i-arrow"/></svg></button><button class="quick-card" data-prompt="我想排查服务日志。请先询问服务名称与日志路径，只在授权目录内读取并对敏感信息脱敏。" type="button"><span class="quick-icon blue"><svg class="icon"><use href="#i-terminal"/></svg></span><strong>分析服务日志</strong><span>定位线索与异常原因</span><svg class="icon quick-arrow"><use href="#i-arrow"/></svg></button></div>
+            <section class="panel recent-panel"><div class="panel-heading"><h2>最近任务</h2><button class="text-button" data-navigate="chat" type="button">全部对话 <svg class="icon"><use href="#i-arrow"/></svg></button></div><div id="recent-tasks"></div></section>
+          </section>
+
+          <section id="view-chat" class="view chat-view" aria-labelledby="chat-title" hidden>
+            <header class="page-heading compact"><div><span class="eyebrow">TASK WORKSPACE</span><h1 id="chat-title">任务对话</h1><p>说清目标，让每一步执行有据可循。</p></div><button id="new-session" class="button secondary" type="button"><svg class="icon"><use href="#i-plus"/></svg>新建对话</button></header>
+            <div id="model-notice" class="notice warning" hidden><svg class="icon"><use href="#i-alert"/></svg><p>还没有配置可用的模型。可以查看主机数据和管理设置，配置模型后再发送任务。</p><button class="text-button" data-navigate="settings" type="button">前往设置</button></div>
+            <div class="conversation-layout"><aside class="session-sidebar panel"><div class="session-heading"><span>对话记录</span><span id="session-count" class="tiny mono">0</span></div><div id="session-list" class="session-list"></div></aside><div class="conversation panel"><div class="conversation-header"><div><span id="conversation-title">新的运维对话</span><small id="conversation-subtitle">网页任务 · 操作由你确认</small></div><button id="delete-session" class="icon-button danger-text" type="button" title="清除此对话历史" aria-label="清除此对话历史" disabled><svg class="icon"><use href="#i-trash"/></svg></button></div><div id="conversation-error" class="notice warning" hidden></div><div id="messages" class="messages" aria-label="对话消息"></div><div id="active-tasks" class="active-tasks"></div><form id="message-form" class="composer" autocomplete="off"><label class="sr-only" for="message-input">描述你的运维任务</label><textarea id="message-input" rows="3" maxlength="20000" placeholder="描述你希望检查或完成的事，例如：为什么磁盘快满了？"></textarea><div class="composer-toolbar"><span><svg class="icon"><use href="#i-shield"/></svg>参数与权限在网页中审批</span><span class="composer-shortcut">Ctrl / ⌘ + Enter 发送</span><button id="send-message" class="button primary" type="submit">发送任务 <svg class="icon"><use href="#i-arrow"/></svg></button></div></form><div class="conversation-disclaimer">助手可能判断有误。请核对执行参数；不要在对话中提供密钥或访问令牌。</div></div></div>
+          </section>
+
+          <section id="view-approvals" class="view" aria-labelledby="approvals-title" hidden><header class="page-heading"><div><span class="eyebrow">HUMAN IN CONTROL</span><h1 id="approvals-title">操作审批</h1><p>先核对目标、参数与影响，再决定是否执行。</p></div><span id="approvals-total" class="pill amber">等待加载</span></header><div class="notice"><svg class="icon"><use href="#i-shield"/></svg><p>这里展示后端冻结的具体操作。批准仅授权这一项操作，不会扩大目录权限。QQ 中不能直接批准执行。</p></div><div id="approval-list" class="stack"></div></section>
+
+          <section id="view-memories" class="view" aria-labelledby="memories-title" hidden>
+            <header class="page-heading"><div><h1 id="memories-title">长期记忆</h1><p>管理助手记住的事实、偏好和处理经验。</p></div><button id="add-memory" class="button primary" type="button"><svg class="icon"><use href="#i-plus"/></svg>新增记忆</button></header>
+            <div class="memory-toolbar"><div class="search-field"><svg class="icon"><use href="#i-search"/></svg><label class="sr-only" for="memory-search">检索记忆</label><input id="memory-search" type="search" maxlength="500" placeholder="搜索记忆…" autocomplete="off"></div><label class="sr-only" for="memory-filter">记忆状态</label><select id="memory-filter"><option value="all">全部状态</option><option value="active">使用中</option><option value="archived">已归档</option><option value="superseded">已替代</option></select></div>
+            <div class="memory-summary"><span id="memory-count">正在读取记忆…</span><button class="text-button" data-navigate="settings" type="button"><svg class="icon"><use href="#i-settings"/></svg>记忆设置</button></div>
+            <div id="memory-list" class="memory-grid"></div>
+            <p class="memory-footnote"><svg class="icon"><use href="#i-lock"/></svg>记忆按授权范围检索，不会授予操作权限。相关度不代表事实仍然有效。</p>
+          </section>
+
+          <section id="view-timeline" class="view" aria-labelledby="timeline-title" hidden><header class="page-heading"><div><span class="eyebrow">EVERY STEP, ACCOUNTED FOR</span><h1 id="timeline-title">执行时间线</h1><p>任务、工具、审批与引用，按真实事件回溯。</p></div><label class="sr-only" for="timeline-filter">事件类型</label><select id="timeline-filter"><option value="all">全部事件</option><option value="task">任务</option><option value="tool">工具调用</option><option value="approval">操作审批</option><option value="memory">记忆引用</option><option value="channel">接入状态</option><option value="watch">自动值守</option></select></header><div id="timeline-list" class="timeline-list panel"></div></section>
+
+          <section id="view-watch" class="view" aria-labelledby="watch-title" hidden><header class="page-heading"><div><span class="eyebrow">QUIETLY WATCHING</span><h1 id="watch-title">自动值守</h1><p>只在需要时提醒。不把每次波动都变成打扰。</p></div><span id="watch-state" class="pill">默认关闭</span></header><form id="watch-config-form" class="config-form" autocomplete="off"></form><section class="panel notification-panel"><div class="panel-heading"><h2>最近通知</h2><span class="tiny muted">脱敏展示 · 试运行不外发</span></div><div id="notifications-list"></div></section></section>
+
+          <section id="view-channels" class="view" aria-labelledby="channels-title" hidden><header class="page-heading"><div><span class="eyebrow">CONNECTED, NOT EXPOSED</span><h1 id="channels-title">QQ 接入</h1><p>两种接入方式，同一条安全边界。</p></div></header><div class="notice warning"><svg class="icon"><use href="#i-alert"/></svg><p>启用并保存会连接外部服务。建议先试运行；关闭试运行后才会真实发送消息。机器人绑定和操作审批只能在此网页确认。</p></div><form id="channels-config-form" class="config-form" autocomplete="off"></form><section class="panel binding-panel"><div class="panel-heading"><div><h2>所有者绑定</h2><p class="tiny muted">生成绑定码 → 发给机器人 → 回到网页核对并批准</p></div><div class="inline-actions"><label class="sr-only" for="binding-channel">绑定渠道</label><select id="binding-channel"><option value="official">QQ 官方</option><option value="onebot">OneBot</option></select><button id="create-binding" class="button secondary small" type="button"><svg class="icon"><use href="#i-plus"/></svg>创建绑定</button></div></div><div id="binding-list"></div></section></section>
+
+          <section id="view-settings" class="view" aria-labelledby="settings-title" hidden><header class="page-heading"><div><span class="eyebrow">SHAPED AROUND YOU</span><h1 id="settings-title">工作台设置</h1><p>模型、人设与权限，由你来定义。</p></div><span class="pill"><svg class="icon"><use href="#i-lock"/></svg>修改需令牌确认</span></header><form id="settings-config-form" class="config-form" autocomplete="off"></form><section class="panel security-panel"><div><span class="eyebrow">ACCESS CONTROL</span><h2>访问令牌</h2><p class="muted">更换令牌会使所有登录会话失效，新令牌在网页仅显示一次，可由服务器本机命令查看或重置。</p></div><button id="rotate-token" class="button danger" type="button"><svg class="icon"><use href="#i-key"/></svg>更换访问令牌</button></section><section class="panel environment-panel"><div class="panel-heading"><h2>运行环境</h2><span class="tiny muted">服务端提供</span></div><div id="settings-environment"></div></section></section>
+        </main>
+
+        <button id="context-backdrop" class="context-backdrop" type="button" aria-label="收起任务详情" hidden></button>
+        <aside id="context-rail" class="context-rail" aria-label="任务上下文" hidden>
+          <div class="rail-heading"><h2>任务详情</h2><span id="stream-indicator" class="stream-indicator" title="等待事件流连接"><span class="status-dot"></span></span><button id="context-close" class="icon-button context-close" type="button" aria-label="关闭任务详情"><svg class="icon"><use href="#i-close"/></svg></button></div>
+          <section class="rail-section"><div class="rail-title"><h2><svg class="icon"><use href="#i-shield"/></svg>待你确认</h2><span id="rail-approval-count" class="tiny mono">—</span></div><div id="rail-approvals"></div><button class="rail-link" data-navigate="approvals" type="button">查看审批中心 <svg class="icon"><use href="#i-arrow"/></svg></button></section>
+          <section class="rail-section"><div class="rail-title"><h2><svg class="icon"><use href="#i-book"/></svg>本次记忆依据</h2><span class="tiny mono">CONTEXT</span></div><div id="rail-memories"></div><button class="rail-link" data-navigate="memories" type="button">管理长期记忆 <svg class="icon"><use href="#i-arrow"/></svg></button></section>
+          <section class="rail-section"><div class="rail-title"><h2><svg class="icon"><use href="#i-pulse"/></svg>运行策略</h2></div><div id="rail-policy" class="policy-list"></div></section>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <dialog id="action-dialog" class="action-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><div><span id="dialog-eyebrow" class="eyebrow">NEXUS / OPS</span><h2 id="dialog-title"></h2></div><button id="dialog-close" class="icon-button" type="button" aria-label="关闭对话框"><svg class="icon"><use href="#i-close"/></svg></button></div><form id="dialog-form" autocomplete="off"><div id="dialog-body" class="dialog-body"></div><p id="dialog-error" class="form-error" role="alert" hidden></p><div class="dialog-actions"><button id="dialog-cancel" class="button secondary" type="button">取消</button><button id="dialog-confirm" class="button primary" type="submit">确认</button></div></form></dialog>
+  <div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+  <noscript><div class="noscript-notice">此工作台需要启用 JavaScript 才能连接服务。所有脚本均从本机加载，不依赖 CDN。</div></noscript>
+</body>
+</html>
