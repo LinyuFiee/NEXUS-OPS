@@ -39,11 +39,11 @@ Go 安装见 [官方安装说明](https://go.dev/doc/install)。如果默认模�
 
 ### 从私有 GitHub 仓库获取
 
-将 `YOUR_GITHUB_LOGIN` 替换为实际仓库所有者。服务器应使用自己配置的 SSH 身份；仅拉取代码时，优先使用该仓库的**只读 deploy key**，不要复制开发电脑上的全部凭据。
+本项目的私有仓库为 [LinyuFiee/open-roboot](https://github.com/LinyuFiee/open-roboot)。下面使用 SSH 拉取；若部署自己的 fork，请替换仓库地址。服务器应使用自己配置的 SSH 身份；仅拉取代码时，优先使用该仓库的**只读 deploy key**，不要复制开发电脑上的全部凭据。
 
 ```sh
-git clone git@github.com:YOUR_GITHUB_LOGIN/deepseek.git
-cd deepseek
+git clone git@github.com:LinyuFiee/open-roboot.git
+cd open-roboot
 git rev-parse HEAD
 ```
 
